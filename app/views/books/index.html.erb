@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <%= link_to('New Book', new_book_path, class: "btn btn-default") %>
+  <%= link_to('New Book', new_account_book_path, class: "btn btn-default") %>
 </div>
 <br><br>
 <table class="table table-boldered text-center">
@@ -16,8 +16,8 @@
       <td><%= book.user.email %></td>
       <td><%= book.updated_at %></td>
       <% if current_user && current_user == book.user %>
-        <td><%= link_to("Edit", edit_book_path(book), class: "btn btn-xs btn-primary") %>
-            <%= link_to("Delete", book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %>
+        <td><%= link_to("Edit", edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
+            <%= link_to("Delete", account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %>
         </td>
       <% end %>
     </tr>

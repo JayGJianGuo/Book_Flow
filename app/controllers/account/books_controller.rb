@@ -52,7 +52,7 @@ class Account::BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :description)
+    params.require(:book).permit(:title, :description, :is_hidden)
   end
 
 end
