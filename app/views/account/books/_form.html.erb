@@ -2,6 +2,14 @@
 <%= simple_form_for [:account,@book] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+
+  <% if @book.image.present? %>
+    <span>当前图书封面</span> <br>
+    <%= image_tag(@book.image.thumb.url) %>
+  <% end %>
+
+  <%= f.input :image, as: :file %>
+  
   <%= f.input :is_hidden %>
 
   <%= f.submit "Submit", class: "btn btn-default" %>

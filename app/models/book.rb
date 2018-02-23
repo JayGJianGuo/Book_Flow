@@ -15,4 +15,6 @@ class Book < ApplicationRecord
 
   scope :published, -> { where(is_hidden:false) }
   scope :recent, -> { order('created_at DESC') }
+
+  mount_uploader :image, ImageUploader
 end
