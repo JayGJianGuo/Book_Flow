@@ -1,9 +1,9 @@
 class Account::BooksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_book_and_check, only: [:edit, :update, :destroy]
+  before_action :find_book_and_check, only: [:edit, :update, :destroy, :publish, :hide]
 
   def index
-    @books = current_user.books
+    @books = current_user.books.recent
   end
 
   def show
@@ -39,6 +39,16 @@ class Account::BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to account_books_path
+  end
+
+  def publish
+    @book.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @book.hide!
+    redirect_to :back
   end
 
   private

@@ -1,11 +1,15 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.where(:is_hidden => false).order("created_at DESC")
+    @books = Book.published.recent
   end
 
   def show
     @book = Book.find(params[:id])
+    if @book.is_hidden
+      flash[:warning] = "This Book already archieved"
+      redirect_to root_path
+    end
   end
 
 end

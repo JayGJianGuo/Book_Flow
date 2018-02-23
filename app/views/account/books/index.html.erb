@@ -14,14 +14,22 @@
   <% @books.each do |book| %>
     <tr>
       <td>
-        <%= render_book_status(job) %>
+        <%= render_book_status(book) %>
 
         <%= link_to(book.title, account_book_path(book)) %></td>
       <td><%= book.user.email %></td>
       <td><%= book.created_at %></td>
       <td>
-        <%= link_to("Edit", edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
-        <%= link_to("Delete", account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to("Edit", edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
+          <%= link_to("Delete", account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-danger") %>
+
+          <% if book.is_hidden %>
+            <%= link_to("公开", publish_account_book_path(book), method: :post, class: "btn btn-xs btn-success") %>
+          <% else %>
+            <%= link_to("隐藏", hide_account_book_path(book), method: :post, class: "btn btn-xs btn-info") %>
+          <% end %>
+        </div>
       </td>
 
     </tr>

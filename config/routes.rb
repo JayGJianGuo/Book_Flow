@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
-    resources :books
+    resources :books do
+      member do
+        post :publish
+        post :hide
+      end
+    end
   end
 end
