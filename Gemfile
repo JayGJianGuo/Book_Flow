@@ -39,7 +39,7 @@ gem "devise"
 gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'carrierwave-qiniu'
+gem "carrierwave-qiniu", "~> 1.1.5"
 gem 'qiniu-rs'
 gem 'figaro'
 
