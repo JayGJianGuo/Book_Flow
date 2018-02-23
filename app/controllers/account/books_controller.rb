@@ -1,8 +1,9 @@
-class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy, :update, :create]
+class Account::BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_book_and_check, only: [:edit, :update, :destroy]
+
   def index
-    @books = Book.all
+    @books = current_user.books
   end
 
   def show
@@ -18,7 +19,7 @@ class BooksController < ApplicationController
     @book.user = current_user
 
     if @book.save
-      redirect_to books_path
+      redirect_to account_books_path
     else
       render :new
     end
@@ -29,7 +30,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to books_path
+      redirect_to account_books_path
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_path
+    redirect_to account_books_path
   end
 
   private
@@ -45,11 +46,13 @@ class BooksController < ApplicationController
   def find_book_and_check
     @book = Book.find(params[:id])
     if current_user != @book.user
+      redirect_to root_path
       flash[:alert] = "You have no permission."
     end
   end
 
   def book_params
-    params.require(:book).permit(:title, :description, :user_id)
+    params.require(:book).permit(:title, :description)
   end
+
 end

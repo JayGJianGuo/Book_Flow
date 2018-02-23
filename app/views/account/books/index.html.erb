@@ -1,0 +1,26 @@
+<div class="pull-right">
+  <%= link_to('New Book', new_account_book_path, class: "btn btn-default") %>
+</div>
+<br><br>
+<table class="table table-boldered text-center">
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Owner</td>
+      <td>Update Time</td>
+      <td>Option</td>
+    </tr>
+  </thead>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= link_to(book.title, account_book_path(book)) %></td>
+      <td><%= book.user.email %></td>
+      <td><%= book.created_at %></td>
+      <td>
+        <%= link_to("Edit", edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
+        <%= link_to("Delete", account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %>
+      </td>
+
+    </tr>
+  <% end %>
+</table>

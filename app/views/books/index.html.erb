@@ -2,14 +2,24 @@
   <%= link_to('New Book', new_book_path, class: "btn btn-default") %>
 </div>
 <br><br>
-<table class="table table-boldered">
+<table class="table table-boldered text-center">
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>User Email</td>
+      <td>Update Time</td>
+    </tr>
+  </thead>
   <% @books.each do |book| %>
     <tr>
       <td><%= link_to(book.title, book_path(book)) %></td>
-
-      <td><%= link_to("Edit", edit_book_path(book), class: "btn btn-xs btn-primary") %></td>
-      <td><%= link_to("Delete", book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %></td>
-      <td><%= book.created_at %></td>
+      <td><%= book.user.email %></td>
+      <td><%= book.updated_at %></td>
+      <% if current_user && current_user == book.user %>
+        <td><%= link_to("Edit", edit_book_path(book), class: "btn btn-xs btn-primary") %>
+            <%= link_to("Delete", book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

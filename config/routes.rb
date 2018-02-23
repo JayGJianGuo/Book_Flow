@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :books do
 
   end
+
+  namespace :account do
+    resources :books
+  end
 end
