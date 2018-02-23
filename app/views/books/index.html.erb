@@ -1,0 +1,15 @@
+<div class="pull-right">
+  <%= link_to('New Book', new_book_path, class: "btn btn-default") %>
+</div>
+<br><br>
+<table class="table table-boldered">
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= link_to(book.title, book_path(book)) %></td>
+
+      <td><%= link_to("Edit", edit_book_path(book), class: "btn btn-xs btn-primary") %></td>
+      <td><%= link_to("Delete", book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-xs btn-default") %></td>
+      <td><%= book.created_at %></td>
+    </tr>
+  <% end %>
+</table>
