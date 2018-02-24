@@ -1,5 +1,5 @@
 class Account::BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :find_book_and_check, only: [:edit, :update, :destroy, :publish, :hide]
 
   def index
