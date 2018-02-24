@@ -1,7 +1,11 @@
 
 <%= simple_form_for [:account,@book] do |f| %>
   <%= f.input :title %>
+  <%= f.input :author %>
   <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :publisher %>
+  <%= f.input :isbn %>
 
   <% if @book.image.present? %>
     <span>当前图书封面</span> <br>
@@ -9,7 +13,7 @@
   <% end %>
 
   <%= f.input :image, as: :file %>
-  
+
   <%= f.input :is_hidden %>
 
   <%= f.submit "Submit", class: "btn btn-default" %>

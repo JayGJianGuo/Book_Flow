@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223125843) do
+ActiveRecord::Schema.define(version: 20180224055426) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20180223125843) do
     t.integer  "user_id"
     t.boolean  "is_hidden",   default: true
     t.string   "image"
+    t.string   "author"
+    t.string   "publisher"
+    t.string   "price"
+    t.string   "isbn"
   end
 
   create_table "users", force: :cascade do |t|

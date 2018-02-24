@@ -8,7 +8,7 @@
       <tr>
 
         <td rowspan="4">
-          <%= link_to book_path(book) do %>
+          <%= link_to account_book_path(book) do %>
             <% if book.image.present? %>
               <%= image_tag(book.image.thumb.url, class: "thumbnail") %>
             <% else %>
