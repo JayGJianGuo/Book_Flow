@@ -19,6 +19,7 @@ class Account::BooksController < ApplicationController
     @book.user = current_user
 
     if @book.save
+      flash[:notice] = "新建成功"
       redirect_to account_books_path
     else
       render :new
@@ -30,6 +31,7 @@ class Account::BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
+      flash[:notice] = "完成修改"
       redirect_to account_books_path
     else
       render :edit
@@ -39,16 +41,19 @@ class Account::BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to account_books_path
+    flash[:alert] = "已删除#{@book.title}"
   end
 
   def publish
     @book.publish!
     redirect_to :back
+    flash[:notice] = "已公开#{@book.title}"
   end
 
   def hide
     @book.hide!
     redirect_to :back
+    flash[:notice] = "已隐藏#{@book.title}"
   end
 
   private

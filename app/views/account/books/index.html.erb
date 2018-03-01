@@ -2,50 +2,59 @@
   <%= link_to(t('New Book'), new_account_book_path, class: "btn btn-warning") %>
 </div>
 <br><br>
-<table class="table table-hover table-boldered text-center">
-  <tbody>
-    <% @books.each do |book| %>
-      <tr class="text-center">
 
-        <td rowspan="4">
-          <%= link_to account_book_path(book) do %>
-            <% if book.image.present? %>
-              <%= image_tag(book.image.thumb.url, class: "thumbnail") %>
-            <% else %>
-              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-            <% end %>
+<% @books.each do |book| %>
+  <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
+
+      <div class="card">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <%= link_to book do %>
+            <div class="card-topper">
+              <%= link_to book_path(book) do %>
+                <% if book.image.present? %>
+                  <%= image_tag(book.image.thumb.url, class: "book-img") %>
+                <% else %>
+                  <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
-        </td>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="card-block">
+            <h4 class="card-title">
+              <%= render_book_status(book) %>
+              <%= t("book.title", :name => book.title) %>
+            </h4>
+            <h6>
+              <%= t("author") %>: <%= render_book_author(book) %>
+            </h6>
+            <h6>
+              <%= t("publisher") %>:<%= render_book_publisher(book) %>
+            </h6>
+            <p class="card-text">
+            </p>
+            <h6 class="published-date"><%= book.updated_at.to_s(:short) %></h6>
 
-        <th><%= t("title") %></th>
-        <td>
-          <%= render_book_status(book) %>
-          <%= link_to(t("book.title", :name => book.title), account_book_path(book)) %>
-        </td>
-      </tr>
-      <tr>
-        <th><%= t("Update") %></th>
-        <td><%= book.created_at.to_s(:short) %></td>
-      </tr>
-      <tr>
-        <th><%= t("author") %></th>
-        <td><%= render_book_author(book) %></td>
-      </tr>
-      <tr>
-        <th><%= t("Option") %></th>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-primary") %>
-            <%= link_to(t("Delete"), account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-danger") %>
+            <h4>
+              <label class= "label label-lg label-success">Statu</label>
+            </h4>
 
-            <% if book.is_hidden %>
-              <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
-            <% else %>
-              <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
-            <% end %>
           </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+
+      </div>
+      <div class="middle">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-primary") %>
+          <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
+
+          <% if book.is_hidden %>
+            <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
+          <% else %>
+            <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+<% end %>
