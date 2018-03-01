@@ -15,7 +15,7 @@ zh-CN:
   Publish: "公开"
   price: "价格"
   New Book: "新增图书"
-  Edit this Book: "编辑图书"
+  Edit_Book: "编辑《%{name}》"
   Submit: "提交"
   Log in: "登陆"
   Sign up: "注册"
