@@ -22,6 +22,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="card-block">
             <h4 class="card-title"><%= link_to(t("book.title", :name => book.title), book_path(book)) %></h4>
+            <h6><%= t("Author") %>: <%= render_book_author(book) %></h6>
             <h6><%= t("Owner") %>: <%= book.user.email %></h6>
             <p class="card-text"><%= t("publisher") %>:<%= render_book_publisher(book) %></p>
             <h6 class="published-date"><%= book.updated_at.to_s(:short) %></h6>
