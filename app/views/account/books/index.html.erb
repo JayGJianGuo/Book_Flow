@@ -4,52 +4,62 @@
 <br><br>
 
 <% @books.each do |book| %>
-  <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
-      <div class="card card-button">
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="card-topper">
-                <% if book.image.present? %>
-                  <%= image_tag(book.image.thumb, class: "book-img") %>
+  <div class="card-surface">
+    <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
+        <div class="card card-button">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="card-topper">
+                  <% if book.image.present? %>
+                    <%= image_tag(book.image.thumb.url, class: "book-img") %>
+                  <% else %>
+                    <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
+                  <% end %>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="card-block">
+              <h4 class="card-title">
+                <%= render_book_status(book) %>
+                <%= t("book.title", :name => book.title) %>
+              </h4>
+              <h6>
+                <%= t("author") %>: <%= render_book_author(book) %>
+              </h6>
+              <h6>
+                <%= t("publisher") %>:<%= render_book_publisher(book) %>
+              </h6>
+              <p class="card-text">
+              </p>
+              <h6 class="published-date">
+                <label class= "label label-lg label-success">Statu</label>
+                <%= book.updated_at.to_s(:short) %>
+              </h6>
+              <h5 class="pull-right visible-xs-block btn-group">
+                <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
+                <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger") %>
+
+                <% if book.is_hidden %>
+                  <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-xs btn-success") %>
                 <% else %>
-                  <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
+                  <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-xs btn-info") %>
                 <% end %>
+              </h5>
             </div>
+          </div>
+
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="card-block">
-            <h4 class="card-title">
-              <%= render_book_status(book) %>
-              <%= t("book.title", :name => book.title) %>
-            </h4>
-            <h6>
-              <%= t("author") %>: <%= render_book_author(book) %>
-            </h6>
-            <h6>
-              <%= t("publisher") %>:<%= render_book_publisher(book) %>
-            </h6>
-            <p class="card-text">
-            </p>
-            <h6 class="published-date"><%= book.updated_at.to_s(:short) %></h6>
+        <div class="middle">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-primary") %>
+            <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
 
-            <h4>
-              <label class= "label label-lg label-success">Statu</label>
-            </h4>
-
+            <% if book.is_hidden %>
+              <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
+            <% else %>
+              <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
+            <% end %>
           </div>
         </div>
-
-      </div>
-      <div class="middle">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-primary") %>
-          <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
-
-          <% if book.is_hidden %>
-            <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
-          <% else %>
-            <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
-          <% end %>
-        </div>
-      </div>
+    </div>
   </div>
 <% end %>

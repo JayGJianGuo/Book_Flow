@@ -5,9 +5,8 @@
   height: 161px;
 }
 
-
 /***** 浮现按钮 ******/
-.col-xs-12, .col-sm-6, .col-md-4, .col-lg-2 {
+.card-surface {
     position: relative;
 }
 
@@ -27,85 +26,81 @@
   -ms-transform: translate(-50%, -50%)
 }
 
-.col-xs-12:active .card {
+.card-surface:hover .card {
+  visibility: visible;
   z-index: 9999;
   opacity: 0.3;
 }
 
-.col-xs-12:active .middle {
-  opacity: 1;
-}
-
-.col-sm-6:active .card {
-  z-index: 9999;
-  opacity: 0.3;
-}
-
-.col-sm-6:active .middle {
+.card-surface:hover .middle {
+  visibility: visible;
   opacity: 1;
 }
 
 /***/
-  .card {
-    border: none;
-    border-radius: 0;
-    margin-bottom: 20px;
-    margin-right: 0px;
-    background-color: white;
+.card {
+  border: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+  margin-right: 0px;
+  background-color: white;
 
-    font-size: 1em;
-    overflow: hidden;
-    padding: 0;
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  border-radius: .28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  .card-topper {
+    height: inherit;
+    background-size: cover;
+    background-position: center;
     border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    .card-topper {
-      height: inherit;
-      background-size: cover;
-      background-position: center;
-      border: none;
-      border-right: 1px solid rgba(34, 36, 38, .1);
-    }
-    .card-block {
-        font-size: 1em;
-        position: relative;
-        margin: 0;
-        padding: 0.5em;
-        box-shadow: none;
-        height: 100%;
-      .card-title {
-        font-size: 1.3rem;
-        margin-bottom: 0;
-        a {
-          color: black;
-          text-decoration: none;
-        }
-      }
-      .tags {
-        margin-bottom: 0;
-        a {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 12px;
-        }
-      }
-      .published-date {
-        font-size: 0.8rem;
-        color: #787878;
-        font-weight: 300;
-        margin-top: 0.3rem;
-        margin-bottom: 0.3rem;
-      }
-      .card-text {
-        font-size: 0.9rem;
-        color: black;
-      }
-
-    }
+    border-right: 1px solid rgba(34, 36, 38, .1);
   }
+  .card-block {
+      font-size: 1em;
+      position: relative;
+      margin: 0;
+      padding: 0.5em;
+      box-shadow: none;
+      height: 100%;
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 0;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+    .tags {
+      margin-bottom: 0;
+      a {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+      }
+    }
+    .published-date {
+      font-size: 0.8rem;
+      color: #787878;
+      font-weight: 300;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .card-text {
+      font-size: 0.9rem;
+      color: black;
+    }
+
+  }
+}
 
 
 @media screen and (min-width: 400px) {
-
+  .visible-xs-block{
+    display: block;
+    visibility: visible;
+  }
 }
 
 /* Medium. Above 48em (768px) */
