@@ -23,7 +23,7 @@
               <h6><%= t("Owner") %>: <%= book.user.email %></h6>
               <p class="card-text"><%= t("publisher") %>:<%= render_book_publisher(book) %></p>
               <h6 class="published-date">
-                <%= book.updated_at.to_s(:short) %>
+                <%= book.updated_at.to_s(:ymdh) %>
                 <label class= "label label-lg label-success">Statu</label>
               </h6>
 

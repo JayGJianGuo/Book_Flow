@@ -18,3 +18,5 @@ end
 
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
+
+Time::DATE_FORMATS.merge!(:default => '%Y/%m/%d %I:%M %p', :ymd => '%Y/%m/%d', :ymdh => "%Y %-b %-d %H:%M")

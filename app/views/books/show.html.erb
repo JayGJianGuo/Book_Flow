@@ -8,9 +8,8 @@
   </div>
   <div class="col-md-6 col-sm-12 col-xs-12">
     <h3>
-      <%= t("title") %>：
-      <%= @book.title %>
-      <%= render_book_status(@book) %>
+      <%= t("book.title", :name => @book.title) %>
+      <label class= "label label-lg label-success">Statu</label>
     </h3>
   </div>
   <div class="col-md-6 col-sm-12 col-xs-12">
@@ -24,6 +23,9 @@
       <%= t("publisher") %>：
       <%= render_book_publisher(@book) %>
     </p>
+  </div>
+  <div class="col-md-6 col-sm-12 col-xs-12 published-date">
+    <%= @book.updated_at.to_s(:ymdh) %>
   </div>
   <div class="col-md-6 col-sm-12 col-xs-12">
     <p>

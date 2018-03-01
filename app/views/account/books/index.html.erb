@@ -32,16 +32,17 @@
               </p>
               <h6 class="published-date">
                 <label class= "label label-lg label-success">Statu</label>
-                <%= book.updated_at.to_s(:short) %>
+                <%= book.updated_at.to_s(:ymdh) %>
               </h6>
               <h5 class="pull-right visible-xs-block btn-group">
+                <%= link_to("详情", book_path(book), class: "btn btn-info btn-xs") %>
                 <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-xs btn-primary") %>
                 <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger") %>
 
                 <% if book.is_hidden %>
                   <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-xs btn-success") %>
                 <% else %>
-                  <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-xs btn-info") %>
+                  <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-xs btn-warning") %>
                 <% end %>
               </h5>
             </div>
@@ -49,14 +50,16 @@
 
         </div>
         <div class="middle">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group-vertical">
+            <%= link_to("详情", book_path(book), class: "btn btn-info") %>
             <%= link_to(t("Edit"), edit_account_book_path(book), class: "btn btn-primary") %>
+          </div>
+          <div class="btn-group-vertical">
             <%= link_to(t("Delete"), account_book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
-
             <% if book.is_hidden %>
               <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
             <% else %>
-              <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
+              <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-warning") %>
             <% end %>
           </div>
         </div>

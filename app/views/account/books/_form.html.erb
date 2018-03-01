@@ -9,12 +9,12 @@
 
   <% if @book.image.present? %>
     <span>当前图书封面</span> <br>
-    <%= image_tag(@book.image.thumb.url) %>
+    <%= image_tag(@book.image.thumb.url, class: "thumbnail") %>
   <% end %>
 
   <%= f.input :image, as: :file, label: t("image") %>
 
   <%= f.input :is_hidden, label: t("is_hidden") %>
-
-  <%= f.submit t("Submit"), class: "btn btn-primary" %>
+<hr>
+  <%= f.submit t("Submit"), class: "pull-right btn btn-primary btn-lg" %>
 <% end %>
