@@ -1,0 +1,117 @@
+  .col-sm-6.col-md-6{
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+    height: 161px;
+  }
+
+
+
+  .card {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: white;
+
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    .card-topper {
+      height: inherit;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-right: 1px solid rgba(34, 36, 38, .1);
+    }
+    .card-block {
+        font-size: 1em;
+        position: relative;
+        margin: 0;
+        padding: 0.5em;
+        box-shadow: none;
+        height: 100%;
+      .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+      .tags {
+        margin-bottom: 0;
+        a {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+        }
+      }
+      .published-date {
+        font-size: 0.8rem;
+        color: #787878;
+        font-weight: 300;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+      }
+      .card-text {
+        font-size: 0.9rem;
+        color: black;
+      }
+
+    }
+  }
+
+
+@media screen and (min-width: 400px) {
+
+}
+
+/* Medium. Above 48em (768px) */
+@media screen and (min-width: 48em) {
+  .book .card-block {
+
+  }
+}
+
+/* Extra large. Above 75em (1200px) */
+@media screen and (min-width: 75em) {
+  .book .card-block {
+
+  }
+}
+
+
+
+
+
+.card-img-top {
+
+}
+
+
+.card-footer {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+
+.book-img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 1px; /* Some padding */
+    display: block;
+    width: auto;
+    height: 100%;
+  img:hover {
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+}
