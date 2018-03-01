@@ -39,9 +39,9 @@
             <%= link_to(t("Delete"), account_book_path(book), method: :delete, :date => { :confirm => "Are you sure?"}, class: "btn btn-danger") %>
 
             <% if book.is_hidden %>
-              <%= link_to(t("Hide"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
+              <%= link_to(t("Publish"), publish_account_book_path(book), method: :post, class: "btn btn-success") %>
             <% else %>
-              <%= link_to(t("Publish"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
+              <%= link_to(t("Hide"), hide_account_book_path(book), method: :post, class: "btn btn-info") %>
             <% end %>
           </div>
         </td>
