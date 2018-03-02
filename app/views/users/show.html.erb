@@ -1,18 +1,50 @@
-<h1>我的个人资料</h1>
-
-<% if current_user != @user %>
-
-<% else %>
+<div class="content" id="about-header">
   <div class="row">
-    <%= link_to('修改个人资料', edit_user_path, class: "btn btn-primary pull-right") %>
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+      <div>
+        <% if @user.profile.image.present? %>
+          <%= image_tag(@user.profile.image.thumb.url, class: "thumbnail") %>
+        <% else %>
+          <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+        <% end %>
+      </div>
+      <div class="text-center">
+        <h2><%= @user.profile.legal_name %></h2>
+        <p><%= @user.profile.bio %></p>
+      </div>
+    </div>
   </div>
-<% end %>
-<% if @user.profile.image.present? %>
-  <%= image_tag(@user.profile.image.thumb.url, class: "thumbnail") %>
-<% else %>
-  <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-<% end %>
-<p>Email: <%= @user.email %></p>
-<p>Timezone: <%= @user.time_zone %></p>
-<p>Birthday: <%= @user.profile.birthday %></p>
-<p>Bio: <%= simple_format @user.profile.bio %></p>
+  <!--正文-->
+  <div class="row" id="offer">
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+      <div class="work-experience">
+        <h3 class="title">生日</h3>
+        <p>
+          <%= @user.profile.birthday %>
+        </p>
+        <div class="body-section">
+          <ul>
+            <li><%= @user.profile.location %></li>
+            <li><%= @user.profile.occupation %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="contact-show">
+        <h3 class="title ">
+          <span class="glyphicon glyphicon-earphone"></span>
+          联系我</h3>
+        <p>
+          微信 :
+          <%= @user.profile.wechat_id %>
+        </p>
+        <p>
+          微博 :
+          <%= @user.profile.weibo_id %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= link_to(t("Edit User"), edit_user_path, class: "btn btn-primary pull-right") %>
+</div>

@@ -22,3 +22,17 @@ zh-CN:
 
   book:
     title: "《%{name}》"
+
+  Legal Name: "昵称"
+  Location: "所在地"
+  Birthday: "生日"
+  Occupation: "职业"
+  Bio:  "个人介绍"
+  Wechat: "微信"
+  Weibo:  "微博"
+  User Image: "头像"
+  time_zone:  "时区"
+  Edit User: "修改信息"
+  Account_Users: "书友档案"
+
+  Save: "保存"

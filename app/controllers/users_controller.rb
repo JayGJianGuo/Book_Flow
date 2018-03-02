@@ -9,9 +9,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user != current_user
+      redirect_to account_users_path
+      flash[:alert] = "这是别人的主页哦😉"
+    end
+
     if @user.update(user_params)
       flash[:notice] = "修改成功"
-      redirect_to edit_user_path
+      redirect_to user_path
     else
       render "edit"
     end

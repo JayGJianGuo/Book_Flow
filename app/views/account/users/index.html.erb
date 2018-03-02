@@ -1,12 +1,34 @@
-<h1><%= t("Account_Users") %></h1>
-
-<table class="table">
-<tr>
-  <th>Email</th>
+<h2 class="text-center"><%= t("Account_Users") %></h2>
+<br>
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <%#= link_to "Edit", edit_account_user_path(user), :class => "btn btn-default" %>
-  </tr>
+    <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
+        <div class="card">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="card-topper">
+                  <% if user.profile.image.present? %>
+                    <%= image_tag(user.profile.image.thumb.url, class: "book-img") %>
+                  <% else %>
+                    <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
+                  <% end %>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="card-block">
+              <h3 class="card-title"><%= user.profile.legal_name %></h3>
+              <h6><%= t("Email") %>:
+                <%= user.email %>
+              </h6>
+              <h6><%= t("Location") %>:
+                <%= user.profile.location %>
+              </h6>
+              <h6>
+                微信：<%= user.profile.wechat_id %>
+              </h6>
+              <h6>
+                微博：<%= user.profile.weibo_id %>
+              </h6>
+            </div>
+          </div>
+        </div>
+    </div>
 <% end %>
-</table>

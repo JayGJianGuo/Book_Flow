@@ -1,33 +1,34 @@
-<h2>Edit User</h2>
+<h2><%= t("Edit User") %></h2>
 
 <%= simple_form_for @user do |f| %>
 
   <%= f.simple_fields_for :profile do |ff| %>
 
-  <%= ff.input :legal_name, label: t("legal_name") %>
+  <%= ff.input :legal_name, label: t("Legal Name") %>
 
+  <%= t("Birthday") %> <br>
   <%= ff.date_select :birthday, start_year: Date.today.year - 7,
                             end_year: Date.today.year - 100,
                             order: [:year, :month, :day], label: false %>
 
-  <%= ff.input :location, label: t("location") %>
-  <%= ff.input :occupation, label: t("occupation") %>
-  <%= ff.input :bio, label: t("bio") %>
-  <%= ff.input :wechat_id, label: t("wechat_id") %>
-  <%= ff.input :weibo_id, label: t("weibo_id") %>
+  <%= ff.input :location, label: t("Location") %>
+  <%= ff.input :occupation, label: t("Occupation") %>
+  <%= ff.input :bio, label: t("Bio") %>
+  <%= ff.input :wechat_id, label: t("Wechat") %>
+  <%= ff.input :weibo_id, label: t("Weibo") %>
 
   <% if @user.profile.image.present? %>
     <span>目前头像</span><br>
     <%= image_tag(@user.profile.image.thumb.url) %>
   <% end %>
 
-  <%= ff.input :image, as: :file %>
+  <%= ff.input :image, as: :file, label: t("User Image") %>
 
   <% end %>
 
   <%= f.input :time_zone, label: t("time_zone") %>
 
 
-  <%= f.submit "Save", :class => "btn btn-primary" %>
+  <%= f.submit "Save", label: t("Save"), :class => "btn btn-primary" %>
 
 <% end %>

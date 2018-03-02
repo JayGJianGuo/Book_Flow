@@ -23,3 +23,12 @@ en:
   hello: "Hello world"
   New book: "Add a Book"
   isbn: "ISBN Code"
+
+  Legal Name: "Nick Name"
+  Location:
+  Occupation:
+  Bio:
+  Wechat:
+  Weibo:
+  User Image: "Profile Photo"
+  time_zone: Time Zone
