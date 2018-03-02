@@ -1,4 +1,5 @@
 class Account::UserProfilesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_user_and_profile
 
     def edit
@@ -21,7 +22,7 @@ class Account::UserProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:legal_name, :birthday, :location, :occupation, :bio, :wechat_id, :weibo_id)
+      params.require(:profile).permit(:legal_name, :birthday, :location, :occupation, :bio, :wechat_id, :weibo_id, :image)
     end
 
 end

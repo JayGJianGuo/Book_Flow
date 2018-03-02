@@ -2,52 +2,32 @@
 
 <%= simple_form_for @user do |f| %>
 
-  <div class="form-group">
-    <%= f.label :time_zone %>
-    <%= f.time_zone_select :time_zone %>
-  </div>
+  <%= f.simple_fields_for :profile do |ff| %>
 
-  <%= f.fields_for :profile do |ff| %>
+  <%= ff.input :legal_name, label: t("legal_name") %>
 
-  <div class="form-group">
-    <%= ff.label :legal_name %>
-    <%= ff.text_field :legal_name, :class => "form-control" %>
-  </div>
+  <%= ff.date_select :birthday, start_year: Date.today.year - 7,
+                            end_year: Date.today.year - 100,
+                            order: [:year, :month, :day], label: false %>
 
-  <div class="form-group">
-    <%= ff.label :birthday %>
-    <%= ff.date_field :birthday, :class => "form-control" %>
-  </div>
+  <%= ff.input :location, label: t("location") %>
+  <%= ff.input :occupation, label: t("occupation") %>
+  <%= ff.input :bio, label: t("bio") %>
+  <%= ff.input :wechat_id, label: t("wechat_id") %>
+  <%= ff.input :weibo_id, label: t("weibo_id") %>
 
-  <div class="form-group">
-    <%= ff.label :location %>
-    <%= ff.text_field :location, :class => "form-control" %>
-  </div>
+  <% if @user.profile.image.present? %>
+    <span>目前头像</span><br>
+    <%= image_tag(@user.profile.image.thumb.url) %>
+  <% end %>
 
-  <div class="form-group">
-    <%= ff.label :occupation %>
-    <%= ff.text_field :occupation, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= ff.label :bio %>
-    <%= ff.text_area :bio, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= ff.label :wechat_id %>
-    <%= ff.text_area :wechat_id, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= ff.label :weibo_id %>
-    <%= ff.text_area :weibo_id, :class => "form-control" %>
-  </div>
+  <%= ff.input :image, as: :file %>
 
   <% end %>
 
-  <div class="form-group">
-    <%= f.submit "Save", :class => "btn btn-primary" %>
-  </div>
+  <%= f.input :time_zone, label: t("time_zone") %>
+
+
+  <%= f.submit "Save", :class => "btn btn-primary" %>
 
 <% end %>

@@ -1,5 +1,17 @@
 <h1>我的个人资料</h1>
 
+<% if current_user != @user %>
+
+<% else %>
+  <div class="row">
+    <%= link_to('修改个人资料', edit_user_path, class: "btn btn-primary pull-right") %>
+  </div>
+<% end %>
+<% if @user.profile.image.present? %>
+  <%= image_tag(@user.profile.image.thumb.url, class: "thumbnail") %>
+<% else %>
+  <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+<% end %>
 <p>Email: <%= @user.email %></p>
 <p>Timezone: <%= @user.time_zone %></p>
 <p>Birthday: <%= @user.profile.birthday %></p>

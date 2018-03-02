@@ -1,15 +1,5 @@
 <h1>Edit User</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= simple_form_for [:account, @user] do |f| %>
 
   <div class="form-group">

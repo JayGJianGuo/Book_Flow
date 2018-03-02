@@ -1,16 +1,12 @@
-<h1>Account Users</h1>
+<h1><%= t("Account_Users") %></h1>
 
 <table class="table">
 <tr>
-  <th>ID</th>
   <th>Email</th>
-  <th>Actions</th>
-</tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.id %></td>
     <td><%= user.email %></td>
-    <td><%= link_to "Edit", edit_account_user_path(user), :class => "btn btn-default" %></td>
+    <%#= link_to "Edit", edit_account_user_path(user), :class => "btn btn-default" %>
   </tr>
 <% end %>
 </table>
