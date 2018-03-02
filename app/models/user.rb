@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :books
-  has_many :profile
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
 end

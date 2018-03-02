@@ -2,21 +2,22 @@ Rails.application.routes.draw do
   devise_for :users
   root "books#index"
 
-  resources :books do
-
-  end
+  resources :books, only: [:index, :show]
 
   resource :user
 
   namespace :account do
-    resource :user do
-      resource :profile, :controller => "user_profiles"
-    end
+
     resources :books do
       member do
         post :publish
         post :hide
       end
     end
+
+    resources :users do
+      resource :profile, :controller => "user_profiles"
+    end
+
   end
 end

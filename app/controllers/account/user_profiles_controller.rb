@@ -15,7 +15,7 @@ class Account::UserProfilesController < ApplicationController
     protected
 
     def find_user_and_profile
-      @user = User.find(params[:user_id]) || current_user
+      @user = User.find(params[:user_id])
       # 因为新建的用户并没有 profile，所以这里先检查是否有 @user.profile，如果没有的话就用 @user.create_profile 新建进数据库
       @profile = @user.profile || @user.create_profile
     end
