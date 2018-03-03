@@ -9,11 +9,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_action :find_user_and_profile
-
-  def find_user_and_profile
-    @user = User.find_by(params[:user_id])
-    @profile = @user.profile || @user.create_profile
-  end
-
 end

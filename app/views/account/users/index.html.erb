@@ -5,8 +5,8 @@
         <div class="card">
           <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="card-topper">
-                  <% if @profile.image.present? %>
-                    <%= image_tag(@profile.image.thumb.url, class: "book-img") %>
+                  <% if user.profile && user.profile.image %>
+                    <%= image_tag(user.profile.image.thumb.url, class: "book-img") %>
                   <% else %>
                     <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
                   <% end %>
