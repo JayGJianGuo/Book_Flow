@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:time_zone, :profile_attributes => [:id, :legal_name, :birthday, :location, :occupation, :bio, :wechat_id, :weibo_id, :image])
+    params.require(:user).permit(:profile_attributes => [:id, :legal_name, :birthday, :location, :occupation, :bio, :wechat_id, :weibo_id, :image])
   end
 
   def find_user
