@@ -5,7 +5,7 @@
         <div class="card">
           <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="card-topper">
-                  <% if user.profile.image.present? %>
+                  <% if user.profile && user.profile.image %>
                     <%= image_tag(user.profile.image.thumb.url, class: "book-img") %>
                   <% else %>
                     <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
@@ -14,19 +14,30 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="card-block">
-              <h3 class="card-title"><%= user.profile.legal_name %></h3>
+              <% if user.profile && user.profile.legal_name %>
+                <h3 class="card-title">
+                  <%= user.profile.legal_name %>
+                </h3>
+              <% end %>
               <h6><%= t("Email") %>:
                 <%= user.email %>
               </h6>
-              <h6><%= t("Location") %>:
-                <%= user.profile.location %>
-              </h6>
-              <h6>
-                微信：<%= user.profile.wechat_id %>
-              </h6>
-              <h6>
-                微博：<%= user.profile.weibo_id %>
-              </h6>
+              <% if user.profile && user.profile.location %>
+                <h6><%= t("Location") %>:
+                  <%= user.profile.location %>
+                </h6>
+              <% end %>
+              <% if user.profile && user.profile.wechat_id %>
+              <p class="fa fa-weixin">:
+                <%= user.profile.wechat_id %>
+              </p>
+              <br>
+              <% end %>
+              <% if user.profile && user.profile.weibo_id %>
+              <p class="fa fa-weibo">:
+                <%= user.profile.weibo_id %>
+              </p>
+              <% end %>
             </div>
           </div>
         </div>

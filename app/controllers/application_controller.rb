@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_profile
+    profile = Profile.find_by(:user_id)
+    if @user.profile.blank?
+      profile = Profile.create
+    end
+  end
+
 end
