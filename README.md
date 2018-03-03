@@ -20,3 +20,7 @@ construction: establish every html and related part for next step.
 Error 提示：NoMethod: qiniu_up_host**********
 方法： Gemfile： gem "carrierwave-qiniu", "~> 1.1.5"
 「控制gem版本」
+
+#### 180303_User_profile
+
+>在Users.index无法显示对应的profile的信息，原因是在user之下的profile没有自动生成，当profile为nil时，user.profile.xxxx就无法提取，需要自动生成profile。
