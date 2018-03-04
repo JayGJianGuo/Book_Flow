@@ -40,7 +40,7 @@ class Account::BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to account_books_path
+    redirect_to accounts_books_path
     flash[:alert] = "已删除#{@book.title}"
   end
 
