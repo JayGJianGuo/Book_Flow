@@ -1,45 +1,61 @@
 <h2 class="text-center"><%= t("Account_Users") %></h2>
 <br>
 <% @users.each do |user| %>
-    <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
-        <div class="card">
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="card-topper">
-                  <% if user.profile && user.profile.image && user.profile.image.thumb && user.profile.image.thumb.url %>
-                    <%= image_tag(user.profile.image.thumb.url, class: "book-img") %>
-                  <% else %>
-                    <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
-                  <% end %>
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="card-block">
-              <% if user.profile && user.profile.legal_name %>
-                <h3 class="card-title">
-                  <%= user.profile.legal_name %>
-                </h3>
-              <% end %>
-              <h6><%= t("Email") %>:
-                <%= user.email %>
-              </h6>
-              <% if user.profile && user.profile.location %>
-                <h6><%= t("Location") %>:
-                  <%= user.profile.location %>
-                </h6>
-              <% end %>
-              <% if user.profile && user.profile.wechat_id %>
-              <p class="fa fa-weixin">:
-                <%= user.profile.wechat_id %>
-              </p>
-              <br>
-              <% end %>
-              <% if user.profile && user.profile.weibo_id %>
-              <p class="fa fa-weibo">:
-                <%= user.profile.weibo_id %>
-              </p>
-              <% end %>
-            </div>
-          </div>
+<div class="card-surface">
+  <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2'>
+    <div class="card">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="card-topper">
+          <% if user.profile && user.profile.image && user.profile.image.thumb && user.profile.image.thumb.url %>
+            <%= image_tag(user.profile.image.thumb.url, class: "book-img") %>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "book-img") %>
+          <% end %>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="card-block">
+          <% if user.profile && user.profile.legal_name %>
+            <h3 class="card-title">
+              <%= user.profile.legal_name %>
+            </h3>
+          <% end %>
+
+          <h6><%= t("Email") %>:
+            <%= user.email %>
+          </h6>
+          <% if user.profile && user.profile.location %>
+            <h6><%= t("Location") %>:
+              <%= user.profile.location %>
+              <% if current_user == user %>
+                <%= link_to(t("Edit User"), edit_user_path, class: "btn btn-info btn-xs pull-right visible-xs-block btn-group") %>
+              <% end %>
+            </h6>
+          <% end %>
+
+          <% if user.profile && user.profile.wechat_id %>
+            <p class="fa fa-weixin">
+              <%= user.profile.wechat_id %>
+            </p>
+          <% end %>
+          <br>
+          <% if user.profile && user.profile.weibo_id %>
+            <p class="fa fa-weibo">
+              <%= user.profile.weibo_id %>
+            </p>
+          <% end %>
+        </div>
+      </div>
     </div>
+    <% if current_user == user %>
+      <div class="middle">
+        <%= link_to(t("Edit User"), edit_user_path, class: "btn btn-info btn-xs") %>
+      </div>
+    <% else %>
+      <label class="middle label label-success label-lg">
+        你好，少年！
+      </label>
+    <% end %>
+  </div>
+</div>
 <% end %>
